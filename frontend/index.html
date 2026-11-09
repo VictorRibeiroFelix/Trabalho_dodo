@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Registro de Avistamento de Pássaros</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main>
+    <h1>🐦 Avistamentos de Pássaros</h1>
+
+    <form id="sighting-form">
+      <input type="text" id="especie" placeholder="Espécie (ex: Bem-te-vi)" required />
+      <input type="text" id="local" placeholder="Local (ex: Parque Ibirapuera)" required />
+      <textarea id="observacoes" placeholder="Observações (comportamento, quantidade, etc.)"></textarea>
+      <div class="form-actions">
+        <button type="submit" id="submit-btn">Registrar avistamento</button>
+      </div>
+    </form>
+
+    <div class="search-bar">
+      <input type="text" id="search" placeholder="Pesquisar" />
+    </div>
+
+    <ul id="sightings-list"></ul>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

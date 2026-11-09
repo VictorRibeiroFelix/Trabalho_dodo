@@ -1,0 +1,178 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  max-width: 640px;
+  margin: 40px auto;
+  padding: 0 16px;
+  background: #f4f5f7;
+  color: #1a1a1a;
+}
+
+h1 {
+  font-size: 1.6rem;
+  margin-bottom: 20px;
+}
+
+/* ---------- Formulário ---------- */
+
+#sighting-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 28px;
+  background: white;
+  padding: 16px;
+  border-radius: 10px;
+  border: 1px solid #e5e5e5;
+}
+
+#sighting-form input,
+#sighting-form textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+#sighting-form textarea {
+  min-height: 70px;
+  resize: vertical;
+}
+
+.form-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.form-actions button {
+  flex: 1;
+  padding: 11px;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#submit-btn {
+  background: #2563eb;
+  color: white;
+}
+
+#submit-btn:hover {
+  background: #1d4ed8;
+}
+
+button.secondary {
+  background: #eef0f2;
+  color: #444;
+}
+
+button.secondary:hover {
+  background: #e2e4e7;
+}
+
+.hidden {
+  display: none;
+}
+
+/* ---------- Busca ---------- */
+
+.search-bar {
+  margin-bottom: 16px;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  background: white;
+}
+
+/* ---------- Lista de avistamentos ---------- */
+
+#sightings-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+#sightings-list li {
+  background: white;
+  border: 1px solid #e5e5e5;
+  border-radius: 10px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+#sightings-list li h3 {
+  margin: 0;
+  font-size: 1.05rem;
+  word-break: break-word;
+}
+
+#sightings-list li p {
+  margin: 0;
+  color: #444;
+  font-size: 0.92rem;
+  word-break: break-word;
+}
+
+#sightings-list li time {
+  font-size: 0.75rem;
+  color: #999;
+}
+
+.item-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+  padding-top: 10px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.item-actions button {
+  padding: 7px 14px;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.edit-btn {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.edit-btn:hover {
+  background: #bfdbfe;
+}
+
+.delete-btn {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.delete-btn:hover {
+  background: #fecaca;
+}
+
+#sightings-list .empty {
+  text-align: center;
+  color: #999;
+  background: transparent;
+  border: none;
+  padding: 24px 0;
+}

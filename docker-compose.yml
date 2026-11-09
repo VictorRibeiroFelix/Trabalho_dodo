@@ -1,0 +1,55 @@
+services:
+  # ---------- BANCO DE DADOS ----------
+  database:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: appuser
+      POSTGRES_PASSWORD: apppassword
+      POSTGRES_DB: avistamentosdb
+    volumes:
+      # Volume nomeado: persiste os dados mesmo se o contêiner for removido
+      - db-data:/var/lib/postgresql/data
+      # Script de inicialização (roda só na primeira criação do volume)
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      # Exposto no host só para você poder inspecionar o banco com um client
+      # (ex: psql, DBeaver). O backend não precisa disso, ele usa a rede interna.
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U appuser -d avistamentosdb"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # ---------- BACKEND (API) ----------
+  backend:
+    build: ./backend
+    restart: unless-stopped
+    depends_on:
+      database:
+        condition: service_healthy
+    environment:
+      # O host do banco é o NOME DO SERVIÇO acima ("database"). O Compose
+      # cria uma rede virtual onde os contêineres se enxergam pelo nome
+      # do serviço, como se fosse um DNS interno.
+      DB_HOST: database
+      DB_PORT: 5432
+      DB_USER: appuser
+      DB_PASSWORD: apppassword
+      DB_NAME: avistamentosdb
+      PORT: 3000
+    ports:
+      - "3000:3000"
+
+  # ---------- FRONTEND ----------
+  frontend:
+    build: ./frontend
+    restart: unless-stopped
+    depends_on:
+      - backend
+    ports:
+      - "8080:80"
+
+volumes:
+  db-data:

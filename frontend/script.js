@@ -1,13 +1,4 @@
-// IMPORTANTE: quem executa este código é o NAVEGADOR do usuário, não um
-// contêiner dentro da rede do Compose. Por isso, aqui NÃO podemos usar o
-// nome do serviço "backend" (isso só funciona entre contêineres). Temos que
-// usar o endereço da máquina host na porta que foi publicada no
-// docker-compose.yml (ex: "3000:3000").
-//
-// Usa o mesmo host que foi digitado na barra de endereço do navegador —
-// funciona tanto acessando via "localhost" quanto via IP da VM, sem precisar
-// editar esse arquivo dependendo de onde você abre a página.
-const API_URL = `http://${window.location.hostname}:3000`;
+const API_URL = '/api';
 
 const form = document.getElementById('sighting-form');
 const list = document.getElementById('sightings-list');
